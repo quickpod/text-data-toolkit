@@ -1,0 +1,13 @@
+{
+  "slug": "text-data-toolkit",
+  "name": "Text & Data Toolkit",
+  "tagline": "Convert, validate, diff and transform JSON/CSV/XML/YAML plus hashes, base64, JWT and regex \u2014 offline.",
+  "categorySlug": "data-converters",
+  "license": "Apache-2.0",
+  "description": "Convert between JSON, CSV, XML and YAML; validate and pretty-print/minify; structural diff and merge; a live regex tester; hashing/checksums (MD5/SHA family/CRC32); base64/hex/URL encode-decode; JWT decode/inspect; and text transforms (case, encoding/EOL fixers, sort/dedupe lines, whitespace). Everything runs locally; nothing is uploaded.",
+  "aiStack": "Python (tkinter + CLI, stdlib + PyYAML)",
+  "platforms": [
+    "windows"
+  ],
+  "buildEntry": "text_data_app.py"
+}

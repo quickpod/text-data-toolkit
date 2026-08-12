@@ -1,0 +1,2 @@
+# Text & Data Toolkit runtime deps — permissive/weak-copyleft only, no AGPL/proprietary.
+PyYAML>=6.0
