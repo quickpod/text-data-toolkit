@@ -20,8 +20,10 @@ jobs:
           pyinstaller --onefile --windowed --name TextDataToolkit
           --icon text-data-toolkit.ico
           --version-file packaging/version.txt
+          --hidden-import textkit.__main__
           --add-data "text-data-toolkit.ico;."
           --collect-submodules yaml
+          --collect-all customtkinter
           text_data_app.py
       - name: Stage installer inputs
         shell: pwsh
@@ -41,4 +43,10 @@ jobs:
           path: |
             dist/TextDataToolkit.exe
             packaging/dist/TextDataToolkit-Setup.exe
+          if-no-files-found: error
+      - name: Upload staging (for signed repack)
+        uses: actions/upload-artifact@v4
+        with:
+          name: text-data-toolkit-staging
+          path: packaging/staging
           if-no-files-found: error

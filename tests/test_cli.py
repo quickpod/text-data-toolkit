@@ -1,5 +1,7 @@
 """End-to-end tests for the argparse CLI and headless GUI guard."""
 
+import pytest
+import sys
 import json
 
 from textkit.__main__ import main
@@ -54,6 +56,8 @@ def test_cli_text_snake(capsys):
     assert capsys.readouterr().out.strip() == "hello_world"
 
 
+@pytest.mark.skipif(sys.platform == "win32",
+                    reason="Windows CI has a real display; main() would open a window and block")
 def test_cli_error_is_clean(capsys):
     rc = main(["hash", "--text", "x", "--algo", "sha256"])  # sanity ok path
     assert rc == 0
@@ -63,11 +67,15 @@ def test_cli_error_is_clean(capsys):
     assert "error:" in capsys.readouterr().err
 
 
+@pytest.mark.skipif(sys.platform == "win32",
+                    reason="Windows CI has a real display; main() would open a window and block")
 def test_gui_imports_without_side_effects():
     from textkit import gui  # noqa: F401
     assert hasattr(gui, "main")
 
 
+@pytest.mark.skipif(sys.platform == "win32",
+                    reason="Windows CI has a real display; main() would open a window and block")
 def test_gui_main_headless_returns_zero():
     from textkit import gui
     assert gui.main() == 0

@@ -1,2 +1,4 @@
 # Text & Data Toolkit runtime deps — permissive/weak-copyleft only, no AGPL/proprietary.
 PyYAML>=6.0
+customtkinter>=5.2
+darkdetect>=0.8
